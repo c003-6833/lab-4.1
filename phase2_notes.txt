@@ -35,3 +35,5 @@ python3 lab4-1_get.py http://httpbin.org
 Notes: most are status 200 meaning they are sucessful. last is status code 503 meaning the service is unavailible.
 
 when i try https a few have request errors while others give the same result as http
+
+if i try to do /thispagedoesnotexist it will tell me there is an error trying to request the page
