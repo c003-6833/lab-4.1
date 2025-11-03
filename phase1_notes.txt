@@ -1,0 +1,51 @@
+step1:
+Q1. What status line did you get and what does it mean?
+HTTP/1.1 200 OK means the request succeeded.
+Q2.What is the Server header value? Is it specific (nginx/1.22) or generic?
+it is specific Apache/2.4.7 
+
+step2:
+first 10 non empty lines:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Go ahead and ScanMe!</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#2A0D45">
+<link rel="preload" as="image" href="/images/sitelogo.png" imagesizes="168px" imagesrcset="/images/sitelogo.png, /images/sitelogo-2x.png 2x">
+<link rel="preload" as="image" href="/shared/images/nst-icons.svg">
+<link rel="stylesheet" href="/shared/css/nst.css?v=2">
+<script async src="/shared/js/nst.js?v=2"></script>
+
+Q1. What is the <title> of the page (if present)?
+Go ahead and ScanMe!
+Q2.Do you see any <form> elements? What are their action attributes (copy them)?
+   <form class="nst-search" id="nst-head-search" action="/search/">
+    <input class="nst-search-q" name="q" type="search" placeholder="Site Search">
+    <button class="nst-search-button" title="Search">
+     <img style="width:100%;aspect-ratio:1/1;" alt="" aria-hidden="true"
+      src="/shared/images/nst-icons.svg#search">
+     </button>
+   </form>
+
+   Step3:
+ Status: 200
+Final URL: http://scanme.nmap.org/
+Server header: Apache/2.4.7 (Ubuntu)
+Content-Type: text/html
+First 200 chars of body:\n <!DOCTYPE html>\n<html lang="en">\n<head>\n<title>Go ahead and ScanMe!</title>\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<meta name="theme-color" content="#2A0D45">\n<link rel="p
+
+Q1.Did requests and curl report the same status and server header?
+no, curl gave me the HTTP status (HTTP/1.1 200 OK) while requests gave me Status: 200
+Q2.If different, what header or other factor might explain it (redirects, default headers, user agent)?
+curl sends its own default, request sends default user agent
+
+Step 4:
+Q1.Did the response change (status, server header, content-length) when the User-Agent was MyTestAgent/1.0?
+Yes the status changed to HTTP/2 200 , the server is now gunicorn/19.9.0 and te content-length is 177
+Q2.If it had changed, what could that mean about the server’s defenses?
+can be more vulnerbale to attacks, you can check for vulenerablitlies on other browsers
+
+Step5:
+Q1.What three pieces of information from the steps above would be most useful in a reconnaissance report, and why?
+Q2.One quick defensive suggestion an admin could use to reduce information leakage from headers.
