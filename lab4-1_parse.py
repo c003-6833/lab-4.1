@@ -22,7 +22,6 @@ def parse_page(url, out_file=None):
                 "type": inp.get("type"),
                 "value": inp.get("value")
             })
-        forms.append({"method": method, "action": action, "inputs": inputs})
 
     result = {
         "url": url,
@@ -30,6 +29,12 @@ def parse_page(url, out_file=None):
         "meta_description": meta_desc,
         "forms": forms
     }
+    
+    keywords = ["admin", "login", "debug", "error"]
+    text = soup.get_text(separator=" ").lower()
+
+    kw_counts = {k: text.count(k) for k in keywords}
+    result["keyword_counts"] = kw_counts
 
     if out_file:
         with open(out_file, "w") as fh:
