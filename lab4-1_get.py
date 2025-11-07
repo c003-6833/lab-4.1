@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # lab4-1_get.py
+# Basic GET with requests
 import requests
 import sys
 

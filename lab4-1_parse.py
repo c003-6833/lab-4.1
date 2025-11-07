@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # lab4-1_parse.py
+# Extract title, meta description, and forms
 from bs4 import BeautifulSoup
 import requests, json, sys, urllib.parse
 

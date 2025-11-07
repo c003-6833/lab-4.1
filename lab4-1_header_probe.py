@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # lab4-1_header_probe.py
+# User-Agent variation
 import requests, sys, csv
 
 USER_AGENTS = [
